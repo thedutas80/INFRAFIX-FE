@@ -1,0 +1,136 @@
+Struktur Landing Page Pengaduan Infrastruktur Rusak
+1. Hero Section (Bagian Paling Atas)
+
+Judul kuat: “Lapor Infrastruktur Rusak di Daerah Anda”
+
+Subjudul: “Bantu kami mempercepat perbaikan fasilitas umum.”
+
+Tombol CTA:
+
+Laporkan Sekarang
+
+Cek Status Laporan
+
+Ilustrasi/ikon infrastruktur (jalan, lampu jalan, selokan, jembatan).
+
+2. Penjelasan Singkat (About / Why Section)
+
+Heading: “Kenapa Pelaporan Infrastruktur Penting?”
+
+3–4 poin ringkas:
+
+Mempercepat perbaikan.
+
+Meminimalisir kecelakaan.
+
+Data laporan lebih akurat.
+
+Transparansi pemerintah/pengelola.
+
+3. Cara Kerja (How It Works)
+
+Buat 3–4 langkah sederhana:
+
+Ambil Foto kerusakan (jalan berlubang, lampu padam, dsb).
+
+Lengkapi Formulir (lokasi, detail kerusakan).
+
+Kirim Laporan.
+
+Pantau Status perkembangan perbaikan.
+
+Setiap poin diberi ikon agar lebih visual.
+
+4. Form Singkat / Quick Report (Opsional tapi efektif)
+
+Input:
+
+Nama
+
+Lokasi (maps atau alamat manual)
+
+Jenis kerusakan (dropdown)
+
+Upload foto
+
+Tombol: Kirim Laporan
+
+5. Statistik / Bukti Transparansi
+
+Tampilkan angka berjalan:
+
+Total laporan masuk
+
+Infrastruktur yang sudah diperbaiki
+
+Waktu rata-rata penanganan
+
+Jumlah wilayah tercover
+
+6. Jenis Infrastruktur yang Bisa Dilaporkan
+
+Dalam bentuk kartu/grid:
+
+Jalan rusak
+
+Lampu jalan mati
+
+Drainase tersumbat
+
+Rambu lalu lintas rusak
+
+Gedung fasilitas umum
+
+Jembatan / trotoar
+
+7. Testimoni / Ulasan Warga
+
+Berisi contoh:
+
+“Laporan saya ditindak dalam 3 hari, mantap!”
+
+“… sangat mudah digunakan …”
+
+(Singkat dan kredibel)
+
+8. Highlight Fitur Utama
+
+Pelaporan cepat
+
+Upload foto langsung
+
+Tracking status laporan realtime
+
+Notifikasi via email/WhatsApp
+
+Dukungan multilokasi
+
+9. Call to Action Kedua (CTA)
+
+Letakkan sebelum footer.
+
+Tombol besar: Laporkan Infrastruktur Rusak Sekarang
+
+Subtext: “Setiap laporan Anda berdampak besar.”
+
+10. Footer
+
+Isi:
+
+Logo & nama platform
+
+Navigasi:
+
+Tentang
+
+Cara Kerja
+
+Kontak
+
+Kebijakan Privasi
+
+Syarat & Ketentuan
+
+Kontak (WhatsApp, email)
+
+Sosial media (jika ada)

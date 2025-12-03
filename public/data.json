@@ -1,0 +1,23 @@
+{
+  "appName": "Infrafix",
+  "favicon": "/assets/img/ico.png",
+  "footer": {
+    "logo": "/assets/img/logo.png",
+    "address": {
+      "street": "Jl. Merdeka No. 123",
+      "city": "Jakarta",
+      "province": "DKI Jakarta",
+      "country": "Indonesia"
+    },
+    "contact": {
+      "email": "info@infrafix.com",
+      "phone": "+62 812 3456 7890"
+    },
+    "socialMedia": {
+      "facebook": "https://facebook.com/infrafix",
+      "twitter": "https://twitter.com/infrafix",
+      "instagram": "https://instagram.com/infrafix",
+      "linkedin": "https://linkedin.com/company/infrafix"
+    }
+  }
+}

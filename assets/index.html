@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lapor Infrastruktur Rusak</title>
+    <link rel="icon" href="/img/ico.png" type="image/png" id="favicon-link" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .bg-primary {
+        background-color: #096b68;
+      }
+      .bg-secondary {
+        background-color: #129990;
+      }
+      .bg-accent {
+        background-color: #90d1ca;
+      }
+      .bg-light {
+        background-color: #fffbde;
+      }
+      .text-primary {
+        color: #096b68;
+      }
+      .text-secondary {
+        color: #129990;
+      }
+      .text-accent {
+        color: #90d1ca;
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg py-4 px-6">
+      <div class="container mx-auto flex justify-between items-center">
+        <img
+          src="/img/logo.png"
+          alt="LaporRusak Logo"
+          class="h-10"
+          id="navbar-logo"
+        />
+        <div class="space-x-4">
+          <a
+            href="login.html"
+            class="text-primary hover:text-secondary font-semibold transition duration-300"
+            >Login</a
+          >
+          <a
+            href="register.html"
+            class="bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded-full transition duration-300"
+            >Sign Up</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-primary text-white py-20">
+      <div
+        class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between"
+      >
+        <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+          <h1 class="text-5xl font-bold leading-tight mb-4" id="main-title">
+            Lapor Infrastruktur Rusak di Daerah Anda
+          </h1>
+          <p class="text-xl mb-8">
+            Bantu kami mempercepat perbaikan fasilitas umum.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-8 justify-center md:justify-start"
+          >
+            <a
+              href="#"
+              class="bg-secondary hover:bg-opacity-80 text-white font-bold py-3 px-6 rounded-full transition duration-300 text-center"
+              >Laporkan Sekarang</a
+            >
+            <a
+              href="#"
+              class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white font-bold py-3 px-6 rounded-full transition duration-300 text-center"
+              >Cek Status Laporan</a
+            >
+          </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <!-- Placeholder for Illustration/Icons -->
+          <img
+            src="/img/jalan.jpg"
+            alt="Lapor Infrastruktur Rusak"
+            class="max-w-full h-auto object-cover rounded-lg shadow-xl"
+            style="max-width: 80%; height: auto"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Penjelasan Singkat (About / Why Section) -->
+    <section class="bg-light py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold text-primary mb-12">
+          Kenapa Pelaporan Infrastruktur Penting?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="p-6 rounded-lg shadow-lg bg-white">
+            <img
+              src="https://img.icons8.com/ios-filled/60/096B68/speed.png"
+              alt="Ikon Cepat"
+              class="mx-auto mb-4 w-16 h-16"
+            />
+            <h3 class="text-xl font-semibold mb-2 text-secondary">
+              Mempercepat perbaikan
+            </h3>
+            <p>Laporan Anda langsung kami teruskan ke pihak terkait.</p>
+          </div>
+          <div class="p-6 rounded-lg shadow-lg bg-white">
+            <img
+              src="https://img.icons8.com/ios-filled/60/096B68/safe.png"
+              alt="Ikon Aman"
+              class="mx-auto mb-4 w-16 h-16"
+            />
+            <h3 class="text-xl font-semibold mb-2 text-secondary">
+              Meminimalisir kecelakaan
+            </h3>
+            <p>Infrastruktur yang cepat diperbaiki mengurangi risiko bahaya.</p>
+          </div>
+          <div class="p-6 rounded-lg shadow-lg bg-white">
+            <img
+              src="https://img.icons8.com/ios-filled/60/096B68/database.png"
+              alt="Ikon Data"
+              class="mx-auto mb-4 w-16 h-16"
+            />
+            <h3 class="text-xl font-semibold mb-2 text-secondary">
+              Data laporan lebih akurat
+            </h3>
+            <p>Dengan detail lokasi dan foto langsung dari lapangan.</p>
+          </div>
+          <div class="p-6 rounded-lg shadow-lg bg-white">
+            <img
+              src="https://img.icons8.com/ios-filled/60/096B68/visible.png"
+              alt="Ikon Transparan"
+              class="mx-auto mb-4 w-16 h-16"
+            />
+            <h3 class="text-xl font-semibold mb-2 text-secondary">
+              Transparansi pemerintah/pengelola
+            </h3>
+            <p>Melihat langsung dampak laporan Anda terhadap perbaikan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cara Kerja (How It Works) -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold text-primary mb-12">
+          Bagaimana Cara Kerjanya?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="flex flex-col items-center">
+            <img
+              src="https://img.icons8.com/ios-filled/80/096B68/camera--v1.png"
+              alt="Ikon Ambil Foto"
+              class="mb-4 w-20 h-20"
+            />
+            <h3 class="text-2xl font-semibold text-secondary mb-2">
+              1. Ambil Foto
+            </h3>
+            <p class="text-center">
+              Ambil foto kerusakan (jalan berlubang, lampu padam, dsb).
+            </p>
+          </div>
+          <div class="flex flex-col items-center">
+            <img
+              src="https://img.icons8.com/ios-filled/80/096B68/form.png"
+              alt="Ikon Lengkapi Formulir"
+              class="mb-4 w-20 h-20"
+            />
+            <h3 class="text-2xl font-semibold text-secondary mb-2">
+              2. Lengkapi Formulir
+            </h3>
+            <p class="text-center">Isi lokasi dan detail kerusakan.</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <img
+              src="https://img.icons8.com/ios-filled/80/096B68/paper-plane.png"
+              alt="Ikon Kirim Laporan"
+              class="mb-4 w-20 h-20"
+            />
+            <h3 class="text-2xl font-semibold text-secondary mb-2">
+              3. Kirim Laporan
+            </h3>
+            <p class="text-center">Laporkan kerusakan dengan mudah.</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <img
+              src="https://img.icons8.com/ios-filled/80/096B68/monitor.png"
+              alt="Ikon Pantau Status"
+              class="mb-4 w-20 h-20"
+            />
+            <h3 class="text-2xl font-semibold text-secondary mb-2">
+              4. Pantau Status
+            </h3>
+            <p class="text-center">
+              Dapatkan informasi perkembangan perbaikan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistik / Bukti Transparansi -->
+    <section class="py-16 bg-light">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold text-primary mb-12">
+          Statistik Laporan Infrastruktur
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="p-6 bg-white rounded-lg shadow-lg">
+            <p class="text-5xl font-bold text-secondary mb-2">12345</p>
+            <p class="text-xl text-gray-600">Total Laporan Masuk</p>
+          </div>
+          <div class="p-6 bg-white rounded-lg shadow-lg">
+            <p class="text-5xl font-bold text-secondary mb-2">9876</p>
+            <p class="text-xl text-gray-600">Infrastruktur Diperbaiki</p>
+          </div>
+          <div class="p-6 bg-white rounded-lg shadow-lg">
+            <p class="text-5xl font-bold text-secondary mb-2">3 Hari</p>
+            <p class="text-xl text-gray-600">Waktu Rata-rata Penanganan</p>
+          </div>
+          <div class="p-6 bg-white rounded-lg shadow-lg">
+            <p class="text-5xl font-bold text-secondary mb-2">50+</p>
+            <p class="text-xl text-gray-600">Wilayah Tercover</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Jenis Infrastruktur yang Bisa Dilaporkan -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold text-primary mb-12">
+          Jenis Infrastruktur yang Bisa Dilaporkan
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="p-6 rounded-lg shadow-lg bg-accent text-white">
+            <img
+              src="https://img.icons8.com/ios-filled/80/FFFFFF/road--v1.png"
+              alt="Ikon Jalan Rusak"
+              class="mx-auto mb-4 w-20 h-20"
+            />
+            <h3 class="text-2xl font-semibold mb-2">Jalan Rusak</h3>
+            <p>Lubang, retakan, atau kerusakan lain pada permukaan jalan.</p>
+          </div>
+          <div class="p-6 rounded-lg shadow-lg bg-accent text-white">
+            <img
+              src="https://img.icons8.com/ios-filled/80/FFFFFF/light-on.png"
+              alt="Ikon Lampu Jalan Mati"
+              class="mx-auto mb-4 w-20 h-20"
+            />
+            <h3 class="text-2xl font-semibold mb-2">Lampu Jalan Mati</h3>
+            <p>Penerangan jalan yang tidak berfungsi atau rusak.</p>
+          </div>
+          <div class="p-6 rounded-lg shadow-lg bg-accent text-white">
+            <img
+              src="https://img.icons8.com/ios-filled/80/FFFFFF/water.png"
+              alt="Ikon Drainase Tersumbat / Selokan Air"
+              class="mx-auto mb-4 w-20 h-20"
+            />
+            <h3 class="text-2xl font-semibold mb-2">Drainase Tersumbat</h3>
+            <p>Saluran air yang mampet menyebabkan genangan.</p>
+          </div>
+          <div class="p-6 rounded-lg shadow-lg bg-accent text-white">
+            <img
+              src="https://img.icons8.com/ios-filled/80/FFFFFF/traffic-light.png"
+              alt="Ikon Rambu Lalu Lintas Rusak"
+              class="mx-auto mb-4 w-20 h-20"
+            />
+            <h3 class="text-2xl font-semibold mb-2">Rambu Lalu Lintas Rusak</h3>
+            <p>Rambu yang hilang, bengkok, atau tidak terbaca.</p>
+          </div>
+          <div class="p-6 rounded-lg shadow-lg bg-accent text-white">
+            <img
+              src="https://img.icons8.com/ios-filled/80/FFFFFF/building.png"
+              alt="Ikon Gedung Fasilitas Umum"
+              class="mx-auto mb-4 w-20 h-20"
+            />
+            <h3 class="text-2xl font-semibold mb-2">Gedung Fasilitas Umum</h3>
+            <p>
+              Kerusakan pada bangunan publik seperti sekolah atau puskesmas.
+            </p>
+          </div>
+          <div class="p-6 rounded-lg shadow-lg bg-accent text-white">
+            <img
+              src="https://img.icons8.com/ios-filled/80/FFFFFF/bridge.png"
+              alt="Ikon Jembatan / Trotoar"
+              class="mx-auto mb-4 w-20 h-20"
+            />
+            <h3 class="text-2xl font-semibold mb-2">Jembatan / Trotoar</h3>
+            <p>
+              Kerusakan struktural pada jembatan atau trotoar yang membahayakan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimoni / Ulasan Warga -->
+    <section class="bg-light py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold text-primary mb-12">Apa Kata Mereka?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="p-6 bg-white rounded-lg shadow-lg italic">
+            <p class="text-lg mb-4">
+              "Laporan saya ditindak dalam 3 hari, mantap! Prosesnya cepat dan
+              transparan."
+            </p>
+            <p class="font-bold text-secondary">
+              - Budi Santoso, Warga Jakarta
+            </p>
+          </div>
+          <div class="p-6 bg-white rounded-lg shadow-lg italic">
+            <p class="text-lg mb-4">
+              "Aplikasi ini sangat mudah digunakan, saya bisa lapor kapan saja
+              dan dari mana saja."
+            </p>
+            <p class="font-bold text-secondary">- Siti Aminah, Warga Bandung</p>
+          </div>
+          <div class="p-6 bg-white rounded-lg shadow-lg italic">
+            <p class="text-lg mb-4">
+              "Saya senang melihat laporan saya langsung diproses. Terima kasih
+              telah peduli!"
+            </p>
+            <p class="font-bold text-secondary">
+              - Joko Susilo, Warga Surabaya
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Kedua (CTA) -->
+    <section class="bg-primary text-white py-20 text-center">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-4">
+          Laporkan Infrastruktur Rusak Sekarang
+        </h2>
+        <p class="text-xl mb-8">Setiap laporan Anda berdampak besar.</p>
+        <a
+          href="#"
+          class="bg-secondary hover:bg-opacity-80 text-white font-bold py-4 px-8 rounded-full text-2xl transition duration-300"
+          >Laporkan Sekarang</a
+        >
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10">
+      <div
+        class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm"
+      >
+        <!-- Logo and Copyright -->
+        <div class="text-center md:text-left">
+          <img
+            src="/img/logo.png"
+            alt="Infrafix Logo"
+            class="h-12 mx-auto md:mx-0 mb-4"
+            id="footer-logo"
+          />
+          <p class="text-gray-400">
+            &copy; Infrafix 2025. All rights reserved.
+          </p>
+        </div>
+
+        <!-- Address Information -->
+        <div class="text-center md:text-left">
+          <h3 class="font-bold text-lg mb-4">Kantor Kami</h3>
+          <p class="text-gray-400" id="footer-address-street"></p>
+          <p class="text-gray-400" id="footer-address-city-province"></p>
+          <p class="text-gray-400" id="footer-address-country"></p>
+          <p class="text-gray-400 mt-2" id="footer-email"></p>
+          <p class="text-gray-400" id="footer-phone"></p>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="text-center md:text-right">
+          <h3 class="font-bold text-lg mb-4">Ikuti Kami</h3>
+          <div class="flex justify-center md:justify-end space-x-4">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition duration-300"
+              id="social-facebook"
+              target="_blank"
+            >
+              <img
+                src="https://img.icons8.com/ios-filled/30/FFFFFF/facebook-new.png"
+                alt="Facebook"
+                class="w-6 h-6"
+              />
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition duration-300"
+              id="social-twitter"
+              target="_blank"
+            >
+              <img
+                src="https://img.icons8.com/ios-filled/30/FFFFFF/twitter--v1.png"
+                alt="Twitter"
+                class="w-6 h-6"
+              />
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition duration-300"
+              id="social-instagram"
+              target="_blank"
+            >
+              <img
+                src="https://img.icons8.com/ios-filled/30/FFFFFF/instagram-new--v1.png"
+                alt="Instagram"
+                class="w-6 h-6"
+              />
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition duration-300"
+              id="social-linkedin"
+              target="_blank"
+            >
+              <img
+                src="https://img.icons8.com/ios-filled/30/FFFFFF/linkedin.png"
+                alt="LinkedIn"
+                class="w-6 h-6"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="container mx-auto px-4 text-center mt-8 text-gray-500">
+        <!-- Original copyright, moved for better structure -->
+      </div>
+    </footer>
+    <script>
+      async function loadData() {
+        try {
+          const response = await fetch("data.json");
+          const data = await response.json();
+
+          // Update app name/title
+          document.title = data.appName;
+          document.getElementById("navbar-logo").alt = data.appName + " Logo";
+          document.getElementById("main-title").textContent =
+            data.appName + " di Daerah Anda";
+
+          // Update favicon
+          document.getElementById("favicon-link").href = data.favicon;
+
+          // Update footer logo
+          const footerLogo = document.getElementById("footer-logo");
+          footerLogo.src = data.footer.logo;
+          footerLogo.alt = data.appName + " Logo";
+
+          // Update footer address
+          document.getElementById("footer-address-street").textContent =
+            data.footer.address.street;
+          document.getElementById("footer-address-city-province").textContent =
+            data.footer.address.city + ", " + data.footer.address.province;
+          document.getElementById("footer-address-country").textContent =
+            data.footer.address.country;
+
+          // Update footer contact
+          document.getElementById("footer-email").textContent =
+            "Email: " + data.footer.contact.email;
+          document.getElementById("footer-phone").textContent =
+            "Telepon: " + data.footer.contact.phone;
+
+          // Update social media links
+          document.getElementById("social-facebook").href =
+            data.footer.socialMedia.facebook;
+          document.getElementById("social-twitter").href =
+            data.footer.socialMedia.twitter;
+          document.getElementById("social-instagram").href =
+            data.footer.socialMedia.instagram;
+          document.getElementById("social-linkedin").href =
+            data.footer.socialMedia.linkedin;
+        } catch (error) {
+          console.error("Error loading data:", error);
+        }
+      }
+
+      loadData();
+    </script>
+  </body>
+</html>

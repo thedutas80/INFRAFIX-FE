@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Sistem Pelaporan Infrastruktur Rusak</title>
+    <link rel="icon" href="/img/ico.png" type="image/png" id="favicon-link" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .bg-primary {
+        background-color: #096b68;
+      }
+      .bg-secondary {
+        background-color: #129990;
+      }
+      .bg-accent {
+        background-color: #90d1ca;
+      }
+      .bg-light {
+        background-color: #fffbde;
+      }
+      .text-primary {
+        color: #096b68;
+      }
+      .text-secondary {
+        color: #129990;
+      }
+      .text-accent {
+        color: #90d1ca;
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans antialiased text-gray-800 bg-light min-h-screen flex flex-col"
+  >
+    <!-- Header / Branding -->
+    <header class="bg-white shadow-lg py-4 px-6">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+          <img
+            src="/img/logo.png"
+            alt="Sistem Pelaporan Infrastruktur Rusak Logo"
+            class="h-10 mr-3"
+          />
+          <div>
+            <h1 class="text-xl font-bold text-primary">
+              Sistem Pelaporan Infrastruktur Rusak
+            </h1>
+            <p class="text-gray-600 text-sm">
+              Laporkan kerusakan lebih cepat & terpantau.
+            </p>
+          </div>
+        </div>
+        <a
+          href="index.html"
+          class="text-primary hover:text-secondary font-semibold transition duration-300"
+          >Kembali ke Beranda</a
+        >
+      </div>
+    </header>
+
+    <!-- Login Card -->
+    <main class="flex-grow flex items-center justify-center py-10 px-4">
+      <div class="bg-white p-8 rounded-lg shadow-xl max-w-md w-full">
+        <h2 class="text-3xl font-bold text-primary mb-2 text-center">
+          Masuk ke Akun Anda
+        </h2>
+        <p class="text-center text-gray-600 mb-8">
+          Selamat datang kembali! Silakan masuk untuk melanjutkan.
+        </p>
+
+        <form>
+          <div class="mb-4">
+            <label
+              for="email_username"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Email atau Username</label
+            >
+            <input
+              type="text"
+              id="email_username"
+              name="email_username"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Masukkan Email atau Username Anda"
+              required
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="password"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Password</label
+            >
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Masukkan Password Anda"
+              required
+            />
+            <a
+              href="#"
+              class="inline-block align-baseline font-bold text-sm text-primary hover:text-secondary mt-2"
+              >Lupa Password?</a
+            >
+          </div>
+          <div class="flex items-center justify-between">
+            <button
+              type="submit"
+              class="bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition duration-300 w-full"
+            >
+              Masuk
+            </button>
+          </div>
+          <p class="text-center text-gray-500 text-sm mt-4">
+            Belum punya akun?
+            <a
+              href="register.html"
+              class="text-primary hover:text-secondary font-semibold"
+              >Daftar di sini</a
+            >.
+          </p>
+
+          <!-- Login via Sosial Media -->
+          <div class="mt-8 text-center">
+            <h3 class="text-lg font-semibold text-gray-700 mb-4">
+              Atau masuk dengan
+            </h3>
+            <div class="flex justify-center space-x-4">
+              <button
+                type="button"
+                class="flex items-center justify-center border border-gray-300 rounded-full py-2 px-4 text-gray-700 hover:bg-gray-100 transition duration-300"
+              >
+                <img
+                  src="https://img.icons8.com/color/24/000000/google-logo.png"
+                  alt="Google"
+                  class="w-5 h-5 mr-2"
+                />
+                Google
+              </button>
+              <button
+                type="button"
+                class="flex items-center justify-center border border-gray-300 rounded-full py-2 px-4 text-gray-700 hover:bg-gray-100 transition duration-300"
+              >
+                <img
+                  src="https://img.icons8.com/color/24/000000/microsoft.png"
+                  alt="Microsoft"
+                  class="w-5 h-5 mr-2"
+                />
+                Microsoft
+              </button>
+              <!-- SSO internal instansi could be added here if applicable -->
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10 mt-auto">
+      <div
+        class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm"
+      >
+        <!-- Logo and Copyright -->
+        <div class="text-center md:text-left">
+          <img
+            src="/img/logo.png"
+            alt="Infrafix Logo"
+            class="h-12 mx-auto md:mx-0 mb-4"
+            id="footer-logo"
+          />
+          <p class="text-gray-400">
+            &copy; Infrafix 2025. All rights reserved.
+          </p>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="text-center md:text-left">
+          <h3 class="font-bold text-lg mb-4">Informasi</h3>
+          <ul>
+            <li>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+                >Tentang Sistem</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+                >Bantuan</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+                >Kebijakan Privasi</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+                >Kontak Instansi</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Address Information -->
+        <div class="text-center md:text-left">
+          <h3 class="font-bold text-lg mb-4">Kantor Kami</h3>
+          <p class="text-gray-400" id="footer-address-street">
+            Jl. Contoh No. 123
+          </p>
+          <p class="text-gray-400" id="footer-address-city-province">
+            Kota Contoh, Provinsi Contoh
+          </p>
+          <p class="text-gray-400" id="footer-address-country">Indonesia</p>
+          <p class="text-gray-400 mt-2" id="footer-email">
+            Email: info@infrafix.com
+          </p>
+          <p class="text-gray-400" id="footer-phone">Telepon: (021) 1234567</p>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="text-center md:text-right">
+          <h3 class="font-bold text-lg mb-4">Ikuti Kami</h3>
+          <div class="flex justify-center md:justify-end space-x-4">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition duration-300"
+              id="social-facebook"
+              target="_blank"
+            >
+              <img
+                src="https://img.icons8.com/ios-filled/30/FFFFFF/facebook-new.png"
+                alt="Facebook"
+                class="w-6 h-6"
+              />
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition duration-300"
+              id="social-twitter"
+              target="_blank"
+            >
+              <img
+                src="https://img.icons8.com/ios-filled/30/FFFFFF/twitter--v1.png"
+                alt="Twitter"
+                class="w-6 h-6"
+              />
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition duration-300"
+              id="social-instagram"
+              target="_blank"
+            >
+              <img
+                src="https://img.icons8.com/ios-filled/30/FFFFFF/instagram-new--v1.png"
+                alt="Instagram"
+                class="w-6 h-6"
+              />
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition duration-300"
+              id="social-linkedin"
+              target="_blank"
+            >
+              <img
+                src="https://img.icons8.com/ios-filled/30/FFFFFF/linkedin.png"
+                alt="LinkedIn"
+                class="w-6 h-6"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // For dynamically loading data for the footer etc, if needed.
+      // This part would be similar to index.html's script, but adapted for this page.
+      // For now, hardcoding some footer values as per the new structure
+      document.getElementById("footer-logo").alt =
+        "Sistem Pelaporan Infrastruktur Rusak Logo";
+    </script>
+  </body>
+</html>

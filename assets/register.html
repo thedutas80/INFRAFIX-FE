@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Pelaporan Infrastruktur Rusak - Register</title>
+    <link rel="icon" href="/img/ico.png" type="image/png" id="favicon-link" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .bg-primary {
+        background-color: #096b68;
+      }
+      .bg-secondary {
+        background-color: #129990;
+      }
+      .bg-accent {
+        background-color: #90d1ca;
+      }
+      .bg-light {
+        background-color: #fffbde;
+      }
+      .text-primary {
+        color: #096b68;
+      }
+      .text-secondary {
+        color: #129990;
+      }
+      .text-accent {
+        color: #90d1ca;
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans antialiased text-gray-800 bg-light min-h-screen flex flex-col"
+  >
+    <!-- Header / Branding -->
+    <header class="bg-white shadow-lg py-4 px-6">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+          <img
+            src="/img/logo.png"
+            alt="Sistem Pelaporan Infrastruktur Rusak Logo"
+            class="h-10 mr-3"
+          />
+          <div>
+            <h1 class="text-xl font-bold text-primary">
+              Sistem Pelaporan Infrastruktur Rusak
+            </h1>
+            <p class="text-gray-600 text-sm">
+              Laporkan kerusakan lebih cepat & terpantau.
+            </p>
+          </div>
+        </div>
+        <a
+          href="index.html"
+          class="text-primary hover:text-secondary font-semibold transition duration-300"
+          >Kembali ke Beranda</a
+        >
+      </div>
+    </header>
+
+    <!-- Register Card -->
+    <main class="flex-grow flex items-center justify-center py-10 px-4">
+      <div
+        class="bg-white p-8 rounded-lg shadow-xl max-w-2xl w-full mx-auto my-auto"
+      >
+        <h2 class="text-3xl font-bold text-primary mb-2 text-center">
+          Daftar Akun Baru
+        </h2>
+        <p class="text-center text-gray-600 mb-8">
+          Buat akun untuk mulai melaporkan kerusakan.
+        </p>
+
+        <form>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div>
+              <label
+                for="full_name"
+                class="block text-gray-700 text-sm font-bold mb-2"
+                >Nama Lengkap</label
+              >
+              <input
+                type="text"
+                id="full_name"
+                name="full_name"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Masukkan Nama Lengkap Anda"
+                required
+              />
+            </div>
+            <div>
+              <label
+                for="email"
+                class="block text-gray-700 text-sm font-bold mb-2"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Masukkan Email Anda"
+                required
+              />
+            </div>
+            <div>
+              <label
+                for="username"
+                class="block text-gray-700 text-sm font-bold mb-2"
+                >Username</label
+              >
+              <input
+                type="text"
+                id="username"
+                name="username"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Buat Username"
+                required
+              />
+            </div>
+            <div>
+              <label
+                for="phone"
+                class="block text-gray-700 text-sm font-bold mb-2"
+                >No. Telepon</label
+              >
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="0812xxxxxx"
+                required
+              />
+            </div>
+            <div>
+              <label
+                for="password"
+                class="block text-gray-700 text-sm font-bold mb-2"
+                >Password</label
+              >
+              <div class="relative">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="shadow appearance-none border rounded w-full py-2 px-3 pr-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  placeholder="Buat Password"
+                  required
+                />
+                <button
+                  type="button"
+                  class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-600"
+                  onclick="togglePasswordVisibility('password')"
+                >
+                  <img
+                    src="https://img.icons8.com/material-outlined/24/096B68/visible--v1.png"
+                    alt="Toggle visibility"
+                    class="w-5 h-5"
+                  />
+                </button>
+              </div>
+            </div>
+            <div>
+              <label
+                for="confirm_password"
+                class="block text-gray-700 text-sm font-bold mb-2"
+                >Konfirmasi Password</label
+              >
+              <div class="relative">
+                <input
+                  type="password"
+                  id="confirm_password"
+                  name="confirm_password"
+                  class="shadow appearance-none border rounded w-full py-2 px-3 pr-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  placeholder="Konfirmasi Password"
+                  required
+                />
+                <button
+                  type="button"
+                  class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-600"
+                  onclick="togglePasswordVisibility('confirm_password')"
+                >
+                  <img
+                    src="https://img.icons8.com/material-outlined/24/096B68/visible--v1.png"
+                    alt="Toggle visibility"
+                    class="w-5 h-5"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkbox & Persetujuan -->
+          <div class="mb-6 space-y-2">
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="terms"
+                name="terms"
+                class="form-checkbox h-4 w-4 text-primary transition duration-150 ease-in-out"
+                required
+              />
+              <label for="terms" class="ml-2 block text-gray-700"
+                >Saya menyetujui
+                <a href="#" class="text-primary hover:underline"
+                  >Syarat & Ketentuan</a
+                ></label
+              >
+            </div>
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="data_consent"
+                name="data_consent"
+                class="form-checkbox h-4 w-4 text-primary transition duration-150 ease-in-out"
+                required
+              />
+              <label for="data_consent" class="ml-2 block text-gray-700"
+                >Saya bersedia data saya digunakan untuk keperluan verifikasi
+                laporan</label
+              >
+            </div>
+          </div>
+
+          <!-- Tombol Aksi -->
+          <button
+            type="submit"
+            class="bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300 w-full text-lg"
+          >
+            Daftar Sekarang
+          </button>
+          <p class="text-center text-gray-500 text-sm mt-4">
+            Sudah punya akun?
+            <a
+              href="login.html"
+              class="text-primary hover:text-secondary font-semibold"
+              >Masuk di sini</a
+            >.
+          </p>
+
+          <!-- Info Keamanan -->
+          <div
+            class="text-center mt-8 text-gray-500 flex items-center justify-center"
+          >
+            <img
+              src="https://img.icons8.com/ios-filled/24/9CA3AF/lock.png"
+              alt="Lock icon"
+              class="w-5 h-5 mr-2"
+            />
+            <p class="text-sm">Data Anda dienkripsi dan aman</p>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10 mt-auto">
+      <div
+        class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm"
+      >
+        <!-- Logo and Copyright -->
+        <div class="text-center md:text-left">
+          <img
+            src="/img/logo.png"
+            alt="Infrafix Logo"
+            class="h-12 mx-auto md:mx-0 mb-4"
+            id="footer-logo"
+          />
+          <p class="text-gray-400">
+            &copy; Infrafix 2025. All rights reserved.
+          </p>
+        </div>
+
+        <!-- Address Information -->
+        <div class="text-center md:text-left">
+          <h3 class="font-bold text-lg mb-4">Kantor Kami</h3>
+          <p class="text-gray-400" id="footer-address-street">
+            Jl. Contoh No. 123
+          </p>
+          <p class="text-gray-400" id="footer-address-city-province">
+            Kota Contoh, Provinsi Contoh
+          </p>
+          <p class="text-gray-400" id="footer-address-country">Indonesia</p>
+          <p class="text-gray-400 mt-2" id="footer-email">
+            Email: info@infrafix.com
+          </p>
+          <p class="text-gray-400" id="footer-phone">Telepon: (021) 1234567</p>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="text-center md:text-right">
+          <h3 class="font-bold text-lg mb-4">Ikuti Kami</h3>
+          <div class="flex justify-center md:justify-end space-x-4">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition duration-300"
+              id="social-facebook"
+              target="_blank"
+            >
+              <img
+                src="https://img.icons8.com/ios-filled/30/FFFFFF/facebook-new.png"
+                alt="Facebook"
+                class="w-6 h-6"
+              />
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition duration-300"
+              id="social-twitter"
+              target="_blank"
+            >
+              <img
+                src="https://img.icons8.com/ios-filled/30/FFFFFF/twitter--v1.png"
+                alt="Twitter"
+                class="w-6 h-6"
+              />
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition duration-300"
+              id="social-instagram"
+              target="_blank"
+            >
+              <img
+                src="https://img.icons8.com/ios-filled/30/FFFFFF/instagram-new--v1.png"
+                alt="Instagram"
+                class="w-6 h-6"
+              />
+            </a>
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white transition duration-300"
+              id="social-linkedin"
+              target="_blank"
+            >
+              <img
+                src="https://img.icons8.com/ios-filled/30/FFFFFF/linkedin.png"
+                alt="LinkedIn"
+                class="w-6 h-6"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // For dynamically loading data for the footer etc, if needed.
+      // This part would be similar to index.html's script, but adapted for this page.
+      // For now, hardcoding some footer values as per the new structure
+      document.getElementById("footer-logo").alt =
+        "Sistem Pelaporan Infrastruktur Rusak Logo";
+    </script>
+    <script>
+      function togglePasswordVisibility(id) {
+        const input = document.getElementById(id);
+        if (input.type === "password") {
+          input.type = "text";
+        } else {
+          input.type = "password";
+        }
+      }
+    </script>
+  </body>
+</html>
