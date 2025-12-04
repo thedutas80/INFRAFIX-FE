@@ -1,11 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  validateCaptcha,
+} from 'react-simple-captcha'
 
 const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false)
+  const [captchaInput, setCaptchaInput] = useState('')
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false)
+
+  useEffect(() => {
+    loadCaptchaEnginge(6) // 6 is the number of characters in the captcha
+  }, [])
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
+  }
+
+  const doSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (validateCaptcha(captchaInput)) {
+      setIsCaptchaValid(true)
+      alert('Captcha Matched')
+      // Proceed with login logic
+    } else {
+      setIsCaptchaValid(false)
+      alert('Captcha Does Not Match')
+      setCaptchaInput('') // Clear captcha input on failure
+      loadCaptchaEnginge(6) // Reload captcha on failure
+    }
   }
 
   return (
@@ -16,7 +41,7 @@ const Login: React.FC = () => {
             Sign in to your account
           </h2>
         </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
+        <form className="mt-8 space-y-6" onSubmit={doSubmit}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
@@ -94,6 +119,25 @@ const Login: React.FC = () => {
                 </button>
               </div>
             </div>
+          </div>
+
+          {/* CAPTCHA */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Verifikasi Captcha
+            </label>
+
+            {/* gambar captcha */}
+            <LoadCanvasTemplate reloadText="Reload" />
+
+            <input
+              type="text"
+              required
+              value={captchaInput}
+              onChange={(e) => setCaptchaInput(e.target.value)}
+              className="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md"
+              placeholder="Masukkan captcha di atas"
+            />
           </div>
 
           <div className="flex items-center justify-between">

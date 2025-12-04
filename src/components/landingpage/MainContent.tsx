@@ -1,7 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const MainContent: React.FC = () => {
+interface MainContentProps {
+  appName: string
+}
+
+const MainContent: React.FC<MainContentProps> = ({ appName }) => {
   return (
     <>
       {/* Hero Section */}
@@ -36,7 +40,7 @@ const MainContent: React.FC = () => {
             {/* Placeholder for Illustration/Icons */}
             <img
               src="/assets/img/jalan.jpg"
-              alt="Lapor Infrastruktur Rusak"
+              alt={`${appName} Infrastruktur Rusak`}
               className="max-w-full h-auto object-cover rounded-lg shadow-xl"
               style={{ maxWidth: '80%', height: 'auto' }}
             />

@@ -1,7 +1,11 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  appName: string
+}
+
+const Header: React.FC<HeaderProps> = ({ appName }) => {
   const location = useLocation()
   const hideAuthButtons =
     location.pathname === '/register' || location.pathname === '/login'
@@ -12,7 +16,7 @@ const Header: React.FC = () => {
         <Link to="/">
           <img
             src="/assets/img/logo.png"
-            alt="LaporRusak Logo"
+            alt={`${appName} Logo`}
             className="h-10"
             id="navbar-logo"
           />

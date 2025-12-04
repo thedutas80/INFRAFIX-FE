@@ -1,0 +1,23 @@
+{
+  "appName": "Lapor Infrastruktur Rusak",
+  "favicon": "assets/img/ico.png",
+  "footer": {
+    "logo": "assets/img/logo.png",
+    "address": {
+      "street": "Jl. Contoh Alamat No. 123",
+      "city": "Kota Contoh",
+      "province": "Provinsi Contoh 12345",
+      "country": "Indonesia"
+    },
+    "contact": {
+      "email": "info@infrafix.com",
+      "phone": "(021) 123-4567"
+    },
+    "socialMedia": {
+      "facebook": "#",
+      "twitter": "#",
+      "instagram": "https://www.google.com",
+      "linkedin": "#"
+    }
+  }
+}
