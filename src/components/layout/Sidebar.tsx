@@ -11,7 +11,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const location = useLocation();
 
   const navItems = [
-    { name: 'Home', icon: FaHome, path: '/dashboard-home' },
+    { name: 'Home', icon: FaHome, path: '/dashboard' },
     { name: 'Assignments', icon: FaTasks, path: '/dashboard/assignments' },
     { name: 'Categories', icon: FaThLarge, path: '/dashboard/categories' },
     { name: 'Audit', icon: FaClipboardList, path: '/dashboard/audit' },

@@ -60,7 +60,7 @@ const Dashboard: React.FC = () => {
     <div className="p-6 overflow-auto">
       <Outlet /> {/* This will render nested routes like Assignments, Categories, etc. */}
       {/* Only show dashboard specific content if no nested route is matched */}
-      {(location.pathname === '/dashboard' || location.pathname === '/dashboard-home') && (
+      {(location.pathname === '/dashboard' || location.pathname === '/dashboard') && (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {/* Card 1 */}
