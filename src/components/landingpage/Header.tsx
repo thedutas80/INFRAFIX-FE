@@ -11,7 +11,7 @@ const Header: React.FC<HeaderProps> = ({ appName }) => {
     location.pathname === '/register' || location.pathname === '/login'
 
   return (
-    <nav className="bg-white shadow-lg py-4 px-6">
+    <nav className="bg-white shadow-lg px-6">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/">
           <img
