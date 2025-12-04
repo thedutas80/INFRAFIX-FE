@@ -15,11 +15,11 @@ const Register: React.FC = () => {
   }
 
   return (
-    <div className="font-sans antialiased text-gray-800 bg-light min-h-screen flex flex-col bg-cover bg-center" style={{ backgroundImage: "url('/assets/img/aman.png')" }}>
+    <div className="font-sans antialiased text-gray-800 min-h-screen flex flex-col bg-cover bg-center" style={{ backgroundImage: "url('/assets/img/aman.png')" }}>
       {/* Header / Branding - This will be handled by the main App.tsx header */}
 
       {/* Register Card */}
-      <main className="flex-grow flex items-center justify-center py-10 px-4">
+      <main className="flex-grow flex items-center justify-center px-4">
         <div className="bg-white p-8 rounded-lg shadow-xl max-w-2xl w-full mx-auto my-auto">
           <h2 className="text-3xl font-bold text-primary mb-2 text-center">
             Daftar Akun Baru
