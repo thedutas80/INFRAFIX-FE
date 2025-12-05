@@ -1,8 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import Header from './components/landingpage/Header'
-import MainContent from './components/landingpage/MainContent'
-import Footer from './components/landingpage/Footer'
+
+// Import other components that are still part of App's internal routing
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
@@ -16,6 +15,13 @@ import Report from './pages/Report'
 import NotFound from './pages/NotFound'
 import Navbar from './components/layout/Navbar';
 import Sidebar from './components/layout/Sidebar';
+
+// Define props for the landing page components
+interface AppProps {
+  HeaderComponent: React.ComponentType<{ appName: string }>;
+  MainContentComponent: React.ComponentType<{ appName: string }>;
+  FooterComponent: React.ComponentType<{ data: any }>;
+}
 
 interface Data {
   appName: string;
@@ -41,9 +47,9 @@ interface Data {
   }
 }
 
-function App(): ReactElement {
+function App({ HeaderComponent, MainContentComponent, FooterComponent }: AppProps): ReactElement {
   const [data, setData] = useState<Data | null>(null)
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for sidebar visibility
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -53,7 +59,6 @@ function App(): ReactElement {
         const jsonData: Data = await response.json()
         setData(jsonData)
 
-        // Update favicon
         const faviconLink = document.getElementById(
           'favicon-link'
         ) as HTMLLinkElement
@@ -61,7 +66,6 @@ function App(): ReactElement {
           faviconLink.href = jsonData.favicon
         }
 
-        // Update document title
         document.title = jsonData.appName
       } catch (error) {
         console.error('Error loading data:', error)
@@ -76,7 +80,7 @@ function App(): ReactElement {
   };
 
   if (!data) {
-    return <div>Loading...</div> // Or a more sophisticated loading component
+    return <div>Loading...</div>
   }
 
   const isDashboardRoute = location.pathname.startsWith('/dashboard');
@@ -90,9 +94,9 @@ function App(): ReactElement {
           <Routes>
             <Route path="/" element={
               <>
-                <Header appName={data.appName} />
-                <MainContent appName={data.appName} />
-                <Footer data={data.footer} />
+                <HeaderComponent appName={data.appName} />
+                <MainContentComponent appName={data.appName} />
+                <FooterComponent data={data.footer} />
               </>
             } />
             <Route path="/register" element={<Register />} />
@@ -105,7 +109,6 @@ function App(): ReactElement {
               <Route path="progress" element={<Progress />} />
               <Route path="ratings" element={<Ratings />} />
               <Route path="report" element={<Report />} />
-              {/* Add other dashboard sub-routes here */}
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
