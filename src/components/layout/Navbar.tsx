@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
+import useAuthStore from '../../store/authStore';
+import { getUsers } from '../../api/authApi';
 
 interface NavbarProps {
   toggleSidebar: () => void;
@@ -8,9 +10,40 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [apiUserName, setApiUserName] = useState<string>('');
+  const [apiUserRole, setApiUserRole] = useState<string>('');
+
+  const navigate = useNavigate();
+  const { user, logout, isLoggedIn } = useAuthStore();
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (isLoggedIn && user?.email) {
+        try {
+          const response = await getUsers();
+          if (response.success && response.data && response.data.content) {
+            const currentUser = response.data.content.find(u => u.email === user.email);
+            if (currentUser) {
+              setApiUserName(currentUser.name);
+              setApiUserRole(currentUser.role);
+            }
+          }
+        } catch (error) {
+          console.error('Failed to fetch user data:', error);
+        }
+      }
+    };
+
+    fetchUserData();
+  }, [isLoggedIn, user?.email]);
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
   };
 
   return (
@@ -24,31 +57,34 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
           <span className="text-xl font-semibold text-gray-800"></span>
         </Link>
       </div>
-      <div className="flex items-center space-x-4 ml-4 relative"> {/* Added relative for dropdown positioning */}
-        <div className="flex flex-col items-end">
-          <span className="text-gray-700 font-bold">LAMINE YAMAL</span>
-          <span className="text-sm text-gray-500">Admin</span>
+      {isLoggedIn ? (
+        <div className="flex items-center space-x-4 ml-4 relative">
+          <div className="flex flex-col items-end">
+            <span className="text-gray-700 font-bold name">{apiUserName}
+            </span>
+            <span className="text-gray-700 role">{apiUserRole}</span>
+          </div>
+          <div className="relative">
+            <button onClick={handleDropdownToggle} className="focus:outline-none">
+              <img src="/assets/img/author.png" alt="User Avatar" className="h-8 w-8 rounded-full cursor-pointer" />
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                <Link to="/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  Settings
+                </Link>
+                <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
         </div>
-        <div className="relative">
-          <button onClick={handleDropdownToggle} className="focus:outline-none">
-            <img src="/assets/img/author.png" alt="User Avatar" className="h-8 w-8 rounded-full cursor-pointer" />
-          </button>
-          {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-              <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                Profile
-              </Link>
-              <Link to="/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                Settings
-              </Link>
-              <Link to="/logout" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                Logout
-              </Link>
-            </div>
-          )}
-        </div>
-        {/* Removed the separate settings icon as it's now in the dropdown */}
-      </div>
+      ) : (
+        <Link to="/login" className="text-gray-700 hover:text-primary font-medium">
+          Login
+        </Link>
+      )}
     </nav>
   );
 };

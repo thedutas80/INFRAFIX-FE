@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaTasks, FaThLarge, FaClipboardList, FaBell, FaChartLine, FaStar, FaFileAlt } from 'react-icons/fa';
+import useAuthStore from '../../store/authStore';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const location = useLocation();
+  const { user } = useAuthStore();
 
   const navItems = [
     { name: 'Home', icon: FaHome, path: '/dashboard' },
@@ -21,6 +23,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
     { name: 'Report', icon: FaFileAlt, path: '/dashboard/report' },
   ];
 
+  const filteredNavItems = user?.roleId === 1 ? navItems.filter(item => item.name === 'Home') : navItems;
+
   return (
     <aside
       className={`fixed top-0 left-0 h-full w-64 bg-teal-700 text-white p-4 z-40 transform ${
@@ -29,7 +33,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
     >
       <nav className="pt-16">
         <ul>
-          {navItems.map((item) => (
+          {filteredNavItems.map((item) => (
             <li key={item.name} className="mb-4">
               <Link
                 to={item.path}

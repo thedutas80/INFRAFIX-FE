@@ -1,5 +1,8 @@
-import React, { ReactElement, useEffect, useState } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import React, { ReactElement, useEffect, useState } from 'react';
+import { Routes, Route, useLocation, Navigate, Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import useAuthStore from './store/authStore';
 
 // Import other components that are still part of App's internal routing
 import Register from './pages/Register'
@@ -12,6 +15,7 @@ import Notifications from './pages/Notifications'
 import Progress from './pages/Progress'
 import Ratings from './pages/Ratings'
 import Report from './pages/Report'
+import SettingProfile from './pages/SettingProfile'
 import NotFound from './pages/NotFound'
 import Navbar from './components/layout/Navbar';
 import Sidebar from './components/layout/Sidebar';
@@ -79,11 +83,27 @@ function App({ HeaderComponent, MainContentComponent, FooterComponent }: AppProp
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const { isLoggedIn } = useAuthStore(); // Moved to top
+
   if (!data) {
     return <div>Loading...</div>
   }
 
-  const isDashboardRoute = location.pathname.startsWith('/dashboard');
+  const isDashboardRoute = location.pathname.startsWith('/dashboard') || location.pathname === '/profile';
+
+  const ProtectedRoute = ({ children }: { children?: React.ReactNode }) => {
+    if (!isLoggedIn) {
+      return <Navigate to="/login" replace />;
+    }
+    return children || <Outlet />;
+  };
+
+  const PublicRoute = ({ children }: { children: React.ReactElement }) => {
+    if (isLoggedIn) {
+      return <Navigate to="/dashboard" replace />;
+    }
+    return children;
+  };
 
   return (
     <div className="font-sans antialiased text-gray-800">
@@ -100,8 +120,9 @@ function App({ HeaderComponent, MainContentComponent, FooterComponent }: AppProp
               </>
             } />
             <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+            <Route path="/dashboard" element={<ProtectedRoute />}>
+              <Route index element={<Dashboard />} />
               <Route path="assignments" element={<Assignments />} />
               <Route path="categories" element={<Categories />} />
               <Route path="audit" element={<Audit />} />
@@ -110,10 +131,12 @@ function App({ HeaderComponent, MainContentComponent, FooterComponent }: AppProp
               <Route path="ratings" element={<Ratings />} />
               <Route path="report" element={<Report />} />
             </Route>
+            <Route path="/settings" element={<ProtectedRoute><SettingProfile /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
       </div>
+      <ToastContainer />
     </div>
   );
 }

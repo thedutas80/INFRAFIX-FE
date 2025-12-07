@@ -1,37 +1,73 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
   validateCaptcha,
-} from 'react-simple-captcha'
+} from 'react-simple-captcha';
+import { toast } from 'react-toastify';
+import useAuthStore from '../store/authStore';
+import { login } from '../api/authApi';
+
+const getRoleFromId = (roleId: number): string => {
+  switch (roleId) {
+    case 1: return 'citizen';
+    case 2: return 'admin';
+    case 3: return 'technician';
+    default: return 'unknown';
+  }
+};
 
 const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false)
-  const [captchaInput, setCaptchaInput] = useState('')
-  const [isCaptchaValid, setIsCaptchaValid] = useState(false)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [captchaInput, setCaptchaInput] = useState('');
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
+  const navigate = useNavigate();
+  const loginUser = useAuthStore((state) => state.login);
+  const { isLoggedIn } = useAuthStore(); // Get isLoggedIn state
 
   useEffect(() => {
-    loadCaptchaEnginge(6) // 6 is the number of characters in the captcha
-  }, [])
+    loadCaptchaEnginge(6); // 6 is the number of characters in the captcha
+  }, []);
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword)
-  }
+    setShowPassword(!showPassword);
+  };
 
-  const doSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (validateCaptcha(captchaInput)) {
-      setIsCaptchaValid(true)
-      alert('Captcha Matched')
-      // Proceed with login logic
-    } else {
-      setIsCaptchaValid(false)
-      alert('Captcha Does Not Match')
-      setCaptchaInput('') // Clear captcha input on failure
-      loadCaptchaEnginge(6) // Reload captcha on failure
+  const doSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (validateCaptcha(captchaInput) === false) {
+      toast.error('Captcha salah, silakan coba lagi!')
+      return
     }
-  }
+
+    setIsCaptchaValid(true);
+
+    try {
+      const response = await login(email, password);
+
+      if (response.success) {
+        alert("LOGIN SUCCESS");
+        toast.success(response.message);
+        const { token, email: userEmail, roleId } = response.data;
+        const role = getRoleFromId(roleId);
+        loginUser({ email: userEmail, name: userEmail, roleId, role, token });
+        navigate('/dashboard');
+      } else {
+        toast.error(response.message || 'Login failed');
+      }
+    } catch (error: any) {
+      console.error('Login error:', error);
+      if (error.message === 'Access denied') {
+        toast.error('Access denied: Invalid credentials');
+      } else {
+        toast.error('An error occurred during login.');
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-transparent px-4 sm:px-6 lg:px-8">
@@ -56,6 +92,8 @@ const Login: React.FC = () => {
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
                 placeholder="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="relative">
@@ -70,6 +108,8 @@ const Login: React.FC = () => {
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
                 <button
