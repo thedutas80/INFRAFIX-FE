@@ -1,14 +1,14 @@
-# vite React TypeScript tailwindcss starter
+# INFRAFIX Frontend
 
-Template for vite, React + tailwindcss + TypeScript projects with some tools preconfigured..
+Aplikasi frontend untuk platform INFRAFIX, yang memungkinkan pengguna melaporkan kerusakan infrastruktur di daerah mereka.
 
-## About
+## Tentang
 
-Template for vite, React + tailwindcss + TypeScript projects with some tools preconfigured.
+INFRAFIX adalah platform digital yang dirancang untuk mempercepat perbaikan fasilitas umum dengan memungkinkan masyarakat melaporkan kerusakan infrastruktur seperti jalan rusak, lampu jalan mati, drainase tersumbat, dan lainnya. Aplikasi ini dibangun menggunakan Vite, React, TailwindCSS, dan TypeScript dengan berbagai tools yang telah dikonfigurasi.
 
 ![Screenshot](assets/screenshot.png)
 
-### Libraries
+### Pustaka
 
 - [React 18](https://reactjs.org/)
 - [React Router 6](https://reactrouter.com)
@@ -18,7 +18,7 @@ Template for vite, React + tailwindcss + TypeScript projects with some tools pre
 - [vite 4](https://vitejs.dev/)
 - [vitetest](https://vitest.dev/)
 
-### Tools
+### Alat
 
 - [commitlint 17](https://commitlint.js.org)
 - [Conventional Commits 1](https://www.conventionalcommits.org)
@@ -28,9 +28,9 @@ Template for vite, React + tailwindcss + TypeScript projects with some tools pre
 - [Prettier 2](https://prettier.io/)
 - [VS Code settings](https://code.visualstudio.com/)
 
-## Usage
+## Penggunaan
 
-Create a new project from this template by clicking the "Use this template" button:
+Buat proyek baru dari template ini dengan mengklik tombol "Use this template":
 
 ![](assets/template-usage.png)
 
@@ -39,3 +39,8 @@ yarn
 yarn dev
 yarn test
 ```
+
+## Kredensial Login Default
+
+- Email: admin@example.com
+- Password: Admin123!
