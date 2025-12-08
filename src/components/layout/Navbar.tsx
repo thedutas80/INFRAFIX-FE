@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import useAuthStore from '../../store/authStore';
-import { getUsers } from '../../api/authApi';
+import { decodeJWT } from '../../api/authApi';
 
 interface NavbarProps {
   toggleSidebar: () => void;
@@ -17,28 +17,40 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
   const { user, logout, isLoggedIn } = useAuthStore();
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      if (isLoggedIn && user?.email) {
-        try {
-          const response = await getUsers();
-          if (response.success && response.data && response.data.content) {
-            const currentUser = response.data.content.find(u => u.email === user.email);
-            if (currentUser) {
-              setApiUserName(currentUser.name);
-              setApiUserRole(currentUser.role);
-            }
-          }
-        } catch (error) {
-          console.error('Failed to fetch user data:', error);
-        }
-      }
-    };
-
-    fetchUserData();
-  }, [isLoggedIn, user?.email]);
+    if (isLoggedIn && user) {
+      setApiUserName(user.name);
+      setApiUserRole(user.role);
+    }
+  }, [isLoggedIn, user]);
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const getRoleFromToken = () => {
+    if (user?.token) {
+      try {
+        const decoded = decodeJWT(user.token);
+        return decoded.role.toLowerCase();
+      } catch (error) {
+        console.error('Failed to decode JWT:', error);
+        return user?.role || 'unknown';
+      }
+    }
+    return user?.role || 'unknown';
+  };
+
+  const getRoleDisplayText = (role: string) => {
+    switch (role.toLowerCase()) {
+      case 'citizen':
+        return 'Warga';
+      case 'technical':
+        return 'Teknisi';
+      case 'unknown':
+        return 'User';
+      default:
+        return role;
+    }
   };
 
   const handleLogout = () => {
@@ -60,9 +72,10 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
       {isLoggedIn ? (
         <div className="flex items-center space-x-4 ml-4 relative">
           <div className="flex flex-col items-end">
-            <span className="text-gray-700 font-bold name">{apiUserName}
+            <span className="text-gray-700 font-bold name">
+              {getRoleFromToken() === 'citizen' ? (user?.email?.split("@")[0] || '') : apiUserName}
             </span>
-            <span className="text-gray-700 role">{apiUserRole}</span>
+            <span className="text-gray-700 role">{getRoleDisplayText(apiUserRole)}</span>
           </div>
           <div className="relative">
             <button onClick={handleDropdownToggle} className="focus:outline-none">

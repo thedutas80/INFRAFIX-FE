@@ -130,3 +130,30 @@ export const createUser = async (data: CreateUserRequest): Promise<CreateUserRes
     throw error;
   }
 };
+
+export interface RegisterRequest {
+  name: string;
+  password: string;
+  email: string;
+  phoneNumber: string;
+  address: string;
+  postCode: string;
+  roleId: number;
+}
+
+export interface RegisterResponse {
+  data: any; // Adjust based on actual response
+  success: boolean;
+  message: string;
+  status: number;
+  timestamp: string;
+}
+
+export const register = async (data: RegisterRequest): Promise<RegisterResponse> => {
+  try {
+    const response = await api.post('/users', data);
+    return response.data;
+  } catch (error: any) {
+    throw error;
+  }
+};
