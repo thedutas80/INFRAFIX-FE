@@ -110,7 +110,7 @@ function App({ HeaderComponent, MainContentComponent, FooterComponent }: AppProp
       {isDashboardRoute && <Navbar toggleSidebar={toggleSidebar} />}
       <div className="flex">
         {isDashboardRoute && <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />}
-        <main className={`flex-1 pt-16 ${isDashboardRoute ? 'lg:ml-64' : ''}`}>
+        <main className={`flex-1 ${isDashboardRoute ? 'pt-16 lg:ml-64' : ''}`}>
           <Routes>
             <Route path="/" element={
               <>

@@ -136,7 +136,7 @@ const Register: React.FC = () => {
   }
 
   return (
-    <div className="font-sans antialiased text-gray-800 min-h-screen flex flex-col bg-cover bg-center" style={{ backgroundImage: "url('/assets/img/aman.png')" }}>
+    <div className="font-sans antialiased text-gray-800 min-h-screen flex flex-col bg-white">
       {/* Header / Branding - This will be handled by the main App.tsx header */}
 
       {/* Register Card */}
