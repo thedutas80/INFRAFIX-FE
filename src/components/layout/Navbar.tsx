@@ -65,7 +65,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
           <FaBars size={24} />
         </button>
         <Link to="/dashboard" className="flex items-center">
-          <img src="/assets/img/logo1.png" alt="LaporinYuk Logo" className="h-8 mr-2" />
+          <img src="/assets/img/logo.png" alt="LaporinYuk Logo" className="h-8 mr-2" />
           <span className="text-xl font-semibold text-gray-800"></span>
         </Link>
       </div>
