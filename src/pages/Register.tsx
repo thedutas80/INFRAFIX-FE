@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { register } from '../api/authApi'
+import { registerUser } from '../api/authApi'
+import { toast } from 'react-toastify'
 
 const Register: React.FC = () => {
   const navigate = useNavigate()
@@ -22,6 +23,7 @@ const Register: React.FC = () => {
     if (!email.trim()) return 'Email is Required'
     if (email.length > 30) return 'Email must not exceed 30 characters'
     if (!/^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email)) return 'Please Use a Valid Email'
+    if (!email.endsWith('@gmail.com')) return 'Email not valid'
     return ''
   }
 
@@ -116,16 +118,17 @@ const Register: React.FC = () => {
     }
 
     try {
-      const response = await register({
+      const response = await registerUser({
         name,
         password,
         email,
         phoneNumber,
         address,
         postCode,
-        roleId: 1
+        role: 'citizen'
       })
       if (response.success) {
+        toast.success("Registration successful, please check your email")
         navigate('/login')
       } else {
         setError(response.message)
@@ -143,10 +146,10 @@ const Register: React.FC = () => {
       <main className="flex-grow flex items-center justify-center px-4">
         <div className="bg-white p-8 rounded-lg shadow-xl max-w-2xl w-full mx-auto my-auto">
           <h2 className="text-3xl font-bold text-primary mb-2 text-center">
-            Daftar Akun Baru
+            Register New Account
           </h2>
           <p className="text-center text-gray-600 mb-8">
-            Buat akun untuk mulai melaporkan kerusakan.
+            Create an account to start reporting issues.
           </p>
 
           <form onSubmit={handleSubmit}>
@@ -156,14 +159,14 @@ const Register: React.FC = () => {
                   htmlFor="full_name"
                   className="block text-gray-700 text-sm font-bold mb-2"
                 >
-                  Nama Lengkap
+                  Full Name
                 </label>
                 <input
                   type="text"
                   id="full_name"
                   name="full_name"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Masukkan Nama Lengkap Anda"
+                  placeholder="Enter your Full Name"
                   onChange={(e) => clearFieldError('full_name')}
                   required
                 />
@@ -181,7 +184,7 @@ const Register: React.FC = () => {
                   id="email"
                   name="email"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Masukkan Email Anda"
+                  placeholder="Enter your Email"
                   onChange={(e) => clearFieldError('email')}
                   required
                 />
@@ -204,7 +207,7 @@ const Register: React.FC = () => {
                     clearFieldError('address')
                   }}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Masukkan Alamat Anda"
+                  placeholder="Enter your Address"
                   required
                 />
                 {fieldErrors.address && <p className="text-red-500 text-sm mt-1">{fieldErrors.address}</p>}
@@ -214,7 +217,7 @@ const Register: React.FC = () => {
                   htmlFor="phone"
                   className="block text-gray-700 text-sm font-bold mb-2"
                 >
-                  No. Telepon
+                  Phone Number
                 </label>
                 <input
                   type="tel"
@@ -240,7 +243,7 @@ const Register: React.FC = () => {
                     id="password"
                     name="password"
                     className="shadow appearance-none border rounded w-full py-2 px-3 pr-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Buat Password"
+                    placeholder="Create Password"
                     onChange={(e) => clearFieldError('password')}
                     required
                   />
@@ -263,7 +266,7 @@ const Register: React.FC = () => {
                   htmlFor="postCode"
                   className="block text-gray-700 text-sm font-bold mb-2"
                 >
-                  Kode Pos
+                  Postal Code
                 </label>
                 <input
                   type="text"
@@ -275,7 +278,7 @@ const Register: React.FC = () => {
                     clearFieldError('postCode')
                   }}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Masukkan Kode Pos"
+                  placeholder="Enter Postal Code"
                   required
                 />
                 {fieldErrors.postCode && <p className="text-red-500 text-sm mt-1">{fieldErrors.postCode}</p>}
@@ -287,7 +290,7 @@ const Register: React.FC = () => {
                 htmlFor="confirm_password"
                 className="block text-gray-700 text-sm font-bold mb-2"
               >
-                Konfirmasi Password
+                Confirm Password
               </label>
               <div className="relative">
                 <input
@@ -295,7 +298,7 @@ const Register: React.FC = () => {
                   id="confirm_password"
                   name="confirm_password"
                   className="shadow appearance-none border rounded w-full py-2 px-3 pr-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Konfirmasi Password"
+                  placeholder="Confirm Password"
                   required
                 />
                 <button
@@ -323,9 +326,9 @@ const Register: React.FC = () => {
                   required
                 />
                 <label htmlFor="terms" className="ml-2 block text-gray-700">
-                  Saya menyetujui
+                  I agree to 
                   <a href="#" className="text-primary hover:underline">
-                    Syarat & Ketentuan
+                     Terms & Conditions
                   </a>
                 </label>
               </div>
@@ -341,8 +344,7 @@ const Register: React.FC = () => {
                   htmlFor="data_consent"
                   className="ml-2 block text-gray-700"
                 >
-                  Saya bersedia data saya digunakan untuk keperluan verifikasi
-                  laporan
+                  I allow my data to be used for report verification purposes
                 </label>
               </div>
             </div>
@@ -352,16 +354,16 @@ const Register: React.FC = () => {
               type="submit"
               className="bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300 w-full text-lg"
             >
-              Daftar Sekarang
+              Register Now
             </button>
             {error && <p className="text-red-500 text-center mt-4">{error}</p>}
             <p className="text-center text-gray-500 text-sm mt-4">
-              Sudah punya akun?
+              Already have an account?
               <Link
                 to="/login"
                 className="text-primary hover:text-secondary font-semibold"
               >
-                Masuk di sini
+                Login here
               </Link>
               .
             </p>
@@ -373,7 +375,7 @@ const Register: React.FC = () => {
                 alt="Lock icon"
                 className="w-5 h-5 mr-2"
               />
-              <p className="text-sm">Data Anda dienkripsi dan aman</p>
+              <p className="text-sm">Your data is encrypted and secure</p>
             </div>
           </form>
         </div>
