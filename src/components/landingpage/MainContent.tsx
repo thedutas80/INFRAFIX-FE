@@ -200,7 +200,7 @@ const MainContent: React.FC<MainContentProps> = ({ appName }) => {
             Jenis Infrastruktur yang Bisa Dilaporkan
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="p-6 rounded-lg shadow-lg bg-accent text-white">
+            <div className="p-6 rounded-lg shadow-lg bg-secondary text-white">
               <img
                 src="https://img.icons8.com/ios-filled/80/FFFFFF/road--v1.png"
                 alt="Ikon Jalan Rusak"
@@ -209,7 +209,7 @@ const MainContent: React.FC<MainContentProps> = ({ appName }) => {
               <h3 className="text-2xl font-semibold mb-2">Jalan Rusak</h3>
               <p>Lubang, retakan, atau kerusakan lain pada permukaan jalan.</p>
             </div>
-            <div className="p-6 rounded-lg shadow-lg bg-accent text-white">
+            <div className="p-6 rounded-lg shadow-lg bg-secondary text-white">
               <img
                 src="https://img.icons8.com/ios-filled/80/FFFFFF/light-on.png"
                 alt="Ikon Lampu Jalan Mati"
@@ -218,7 +218,7 @@ const MainContent: React.FC<MainContentProps> = ({ appName }) => {
               <h3 className="text-2xl font-semibold mb-2">Lampu Jalan Mati</h3>
               <p>Penerangan jalan yang tidak berfungsi atau rusak.</p>
             </div>
-            <div className="p-6 rounded-lg shadow-lg bg-accent text-white">
+            <div className="p-6 rounded-lg shadow-lg bg-secondary text-white">
               <img
                 src="https://img.icons8.com/ios-filled/80/FFFFFF/water.png"
                 alt="Ikon Drainase Tersumbat / Selokan Air"
@@ -229,7 +229,7 @@ const MainContent: React.FC<MainContentProps> = ({ appName }) => {
               </h3>
               <p>Saluran air yang mampet menyebabkan genangan.</p>
             </div>
-            <div className="p-6 rounded-lg shadow-lg bg-accent text-white">
+            <div className="p-6 rounded-lg shadow-lg bg-secondary text-white">
               <img
                 src="https://img.icons8.com/ios-filled/80/FFFFFF/traffic-light.png"
                 alt="Ikon Rambu Lalu Lintas Rusak"
@@ -240,7 +240,7 @@ const MainContent: React.FC<MainContentProps> = ({ appName }) => {
               </h3>
               <p>Rambu yang hilang, bengkok, atau tidak terbaca.</p>
             </div>
-            <div className="p-6 rounded-lg shadow-lg bg-accent text-white">
+            <div className="p-6 rounded-lg shadow-lg bg-secondary text-white">
               <img
                 src="https://img.icons8.com/ios-filled/80/FFFFFF/building.png"
                 alt="Ikon Gedung Fasilitas Umum"
@@ -253,7 +253,7 @@ const MainContent: React.FC<MainContentProps> = ({ appName }) => {
                 Kerusakan pada bangunan publik seperti sekolah atau puskesmas.
               </p>
             </div>
-            <div className="p-6 rounded-lg shadow-lg bg-accent text-white">
+            <div className="p-6 rounded-lg shadow-lg bg-secondary text-white">
               <img
                 src="https://img.icons8.com/ios-filled/80/FFFFFF/bridge.png"
                 alt="Ikon Jembatan / Trotoar"
