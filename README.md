@@ -1,46 +1,123 @@
-# INFRAFIX Frontend
+# INFRAFIX-FE
 
-Aplikasi frontend untuk platform INFRAFIX, yang memungkinkan pengguna melaporkan kerusakan infrastruktur di daerah mereka.
+INFRAFIX-FE adalah aplikasi frontend untuk platform INFRAFIX, yang dirancang untuk memfasilitasi manajemen infrastruktur, pelaporan, dan pelacakan pemeliharaan. Aplikasi ini menyediakan antarmuka yang lengkap bagi pengguna untuk melaporkan masalah, melacak kemajuan perbaikan, mengelola penugasan, dan melihat audit.
 
-## Tentang
+## 🚀 Fitur
 
-INFRAFIX adalah platform digital yang dirancang untuk mempercepat perbaikan fasilitas umum dengan memungkinkan masyarakat melaporkan kerusakan infrastruktur seperti jalan rusak, lampu jalan mati, drainase tersumbat, dan lainnya. Aplikasi ini dibangun menggunakan Vite, React, TailwindCSS, dan TypeScript dengan berbagai tools yang telah dikonfigurasi.
+- **Otentikasi**: Login dan Registrasi yang aman untuk pengguna.
+- **Dashboard**: Tinjauan status infrastruktur dan aktivitas terkini.
+- **Manajemen Citizen**: Pengelolaan dan pemantauan aktivitas warga.
+- **Manajemen Teknisi**: Pengelolaan data teknisi dan penugasan lapangan.
+- **Manajemen Admin**: Kontrol administratif penuh terhadap sistem.
+- **Manajemen Pengelola**: Koordinasi dan pengawasan operasional infrastruktur.
+- **Sistem Pelaporan**: Mengajukan laporan untuk masalah infrastruktur (`Report`).
+- **Manajemen Penugasan**: Melacak dan mengelola penugasan tugas (`Assignments`).
+- **Pelacakan Kemajuan**: Memantau status perbaikan atau tugas yang sedang berlangsung (`Progress`).
+- **Log Audit**: Melihat aktivitas sistem dan audit (`Audit`).
+- **Kategori**: Mengelola kategori infrastruktur (`Categories`).
+- **Penilaian & Umpan Balik**: Sistem untuk memberikan penilaian pada tugas yang telah selesai (`Ratings`).
+- **Notifikasi**: Pemberitahuan dan peringatan waktu nyata (`Notifications`).
+- **Manajemen Profil**: Pengaturan pengguna dan pembaruan profil (`SettingProfile`).
 
-![Screenshot](assets/screenshot.png)
+## 🛠️ Teknologi yang Digunakan
 
-### Pustaka
+Proyek ini dibangun menggunakan teknologi web modern:
 
-- [React 18](https://reactjs.org/)
-- [React Router 6](https://reactrouter.com)
-- [tailwindcss 3](https://tailwindcss.com/)
-  - [tailwindcss forms plugin](https://tailwindcss-forms.vercel.app/)
-- [TypeScript 4.9.5](https://www.typescriptlang.org/)
-- [vite 4](https://vitejs.dev/)
-- [vitetest](https://vitest.dev/)
+- **Framework**: [React](https://reactjs.org/) dengan [Vite](https://vitejs.dev/)
+- **Bahasa**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Manajemen State**: [Zustand](https://github.com/pmndrs/zustand)
+- **Form Handling**: [React Hook Form](https://react-hook-form.com/) dengan validasi [Zod](https://github.com/colinhacks/zod)
+- **HTTP Client**: [Axios](https://axios-http.com/)
+- **Routing**: [React Router](https://reactrouter.com/)
+- **Ikon**: [React Icons](https://react-icons.github.io/react-icons/) & [Heroicons](https://heroicons.com/)
 
-### Alat
+## 📦 Memulai
 
-- [commitlint 17](https://commitlint.js.org)
-- [Conventional Commits 1](https://www.conventionalcommits.org)
-- [editorconfig](https://editorconfig.org/)
-- [eslint 8](https://eslint.org/)
-- [husky 8](https://typicode.github.io/husky/#/)
-- [Prettier 2](https://prettier.io/)
-- [VS Code settings](https://code.visualstudio.com/)
+### Prasyarat
 
-## Penggunaan
+Pastikan Anda telah menginstal:
+- [Node.js](https://nodejs.org/) (Versi LTS terbaru direkomendasikan)
+- [npm](https://www.npmjs.com/) atau [yarn](https://yarnpkg.com/)
 
-Buat proyek baru dari template ini dengan mengklik tombol "Use this template":
+### Instalasi
 
-![](assets/template-usage.png)
+1. Kloning repositori:
+   ```bash
+   git clone https://github.com/thedutas80/INFRAFIX-FE.git
+   ```
+
+2. Masuk ke direktori proyek:
+   ```bash
+   cd INFRAFIX-FE
+   ```
+
+3. Instal dependensi:
+   ```bash
+   npm install
+   # atau
+   yarn install
+   ```
+
+### Menjalankan Aplikasi
+
+Untuk memulai server pengembangan:
 
 ```bash
-yarn
+npm run dev
+# atau
 yarn dev
-yarn test
 ```
 
-## Kredensial Login Default
+Aplikasi akan tersedia di `http://localhost:5173` (atau port yang ditampilkan di terminal Anda).
 
-- Email: admin@example.com
-- Password: Admin123!
+### Build untuk Produksi
+
+Untuk membuat build produksi:
+
+```bash
+npm run build
+# atau
+yarn build
+```
+
+Untuk meninjau build produksi secara lokal:
+
+```bash
+npm run serve
+# atau
+yarn serve
+```
+
+## 📂 Struktur Proyek
+
+```
+INFRAFIX-FE/
+├── public/              # Aset statis
+├── src/
+│   ├── api/             # Konfigurasi API dan panggilan servis
+│   ├── components/      # Komponen UI yang dapat digunakan kembali
+│   ├── pages/           # Halaman aplikasi (views)
+│   ├── store/           # Manajemen state global (Zustand)
+│   ├── types/           # Definisi tipe TypeScript
+│   ├── App.tsx          # Komponen utama aplikasi
+│   └── main.tsx         # Titik masuk (Entry point)
+├── .eslintrc.js         # Konfigurasi ESLint
+├── tailwind.config.js   # Konfigurasi Tailwind CSS
+├── tsconfig.json        # Konfigurasi TypeScript
+└── vite.config.ts       # Konfigurasi Vite
+```
+
+## 🤝 Kontribusi
+
+Kontribusi sangat kami harapkan! Silakan ikuti langkah-langkah berikut:
+
+1. Fork repositori ini.
+2. Buat branch baru (`git checkout -b fitur/FiturAnda`).
+3. Commit perubahan Anda (`git commit -m 'Menambahkan fitur baru'`).
+4. Push ke branch tersebut (`git push origin fitur/FiturAnda`).
+5. Buat Pull Request.
+
+## 📄 Lisensi
+
+Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE](LICENSE) untuk detailnya.
