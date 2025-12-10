@@ -9,5 +9,14 @@ export default defineConfig({
     alias: {
       'events': path.resolve(__dirname, 'node_modules/events/events.js')
     }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://103.164.191.212:8082',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   }
 })

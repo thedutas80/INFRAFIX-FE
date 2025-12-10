@@ -6,8 +6,12 @@ import {
   validateCaptcha,
 } from 'react-simple-captcha';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import useAuthStore from '../store/authStore';
 import { login } from '../api/authApi';
+
+const MySwal = withReactContent(Swal);
 
 const getRoleFromId = (roleId: number): string => {
   switch (roleId) {
@@ -50,8 +54,13 @@ const Login: React.FC = () => {
       const response = await login(email, password);
 
       if (response.success) {
-        alert("LOGIN SUCCESS");
-        toast.success(response.message);
+        MySwal.fire({
+          icon: 'success',
+          title: 'Login Success!',
+          text: response.message,
+          timer: 2000,
+          showConfirmButton: false
+        });
         const { token, email: userEmail, roleId } = response.data;
         const role = getRoleFromId(roleId);
         loginUser({ email: userEmail, name: userEmail, roleId, role, token });

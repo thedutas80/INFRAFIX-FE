@@ -44,9 +44,9 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
   const getRoleDisplayText = (role: string) => {
     switch (role.toLowerCase()) {
       case 'citizen':
-        return 'Warga';
+        return 'Citizen';
       case 'technical':
-        return 'Teknisi';
+        return 'Technical';
       case 'admin':
         return 'Admin';
       case 'unknown':

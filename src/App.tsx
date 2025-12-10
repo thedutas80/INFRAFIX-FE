@@ -7,6 +7,7 @@ import useAuthStore from './store/authStore';
 // Import other components that are still part of App's internal routing
 import Register from './pages/Register'
 import Login from './pages/Login'
+import VerifyEmail from './pages/VerifyEmail'
 import Dashboard from './pages/Dashboard'
 import Assignments from './pages/Assignments'
 import Categories from './pages/Categories'
@@ -121,6 +122,7 @@ function App({ HeaderComponent, MainContentComponent, FooterComponent }: AppProp
             } />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+            <Route path="/verify-email" element={<VerifyEmail />} />
             <Route path="/dashboard" element={<ProtectedRoute />}>
               <Route index element={<Dashboard />} />
               <Route path="assignments" element={<Assignments />} />

@@ -3,14 +3,35 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaTasks, FaThLarge, FaClipboardList, FaBell, FaChartLine, FaStar, FaFileAlt } from 'react-icons/fa';
 import useAuthStore from '../../store/authStore';
 
+import { jwtDecode } from 'jwt-decode';
+
 interface SidebarProps {
   isOpen: boolean;
   toggleSidebar: () => void;
 }
 
+interface DecodedToken {
+  role: string;
+  userId: number;
+}
+
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const location = useLocation();
   const { user } = useAuthStore();
+
+  const getUserRole = () => {
+    if (user?.token) {
+      try {
+        const decoded = jwtDecode<DecodedToken>(user.token);
+        return decoded.role;
+      } catch (error) {
+        console.error('Failed to decode JWT:', error);
+      }
+    }
+    return user?.role;
+  };
+
+  const userRole = getUserRole();
 
   const navItems = [
     { name: 'Home', icon: FaHome, path: '/dashboard' },
@@ -23,7 +44,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
     { name: 'Report', icon: FaFileAlt, path: '/dashboard/report' },
   ];
 
-  const filteredNavItems = user?.roleId === 1 ? navItems.filter(item => item.name === 'Home') : navItems;
+  // Check for citizen role (roleId 1 or role 'citizen')
+  // Using loose equality to handle both string and number types safely
+  const isCitizen = user?.roleId == 1 || userRole?.toLowerCase() === 'citizen';
+
+  const filteredNavItems = isCitizen
+    ? navItems.filter(item => ['Home', 'Report'].includes(item.name))
+    : navItems;
 
   return (
     <aside
