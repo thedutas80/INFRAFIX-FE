@@ -187,14 +187,14 @@ const Assignments: React.FC = () => {
                             className="inline-flex items-center justify-center p-1 rounded-md hover:bg-gray-200"
                             title="Edit Status"
                           >
-                            <img src="/assets/img/edit.png" alt="Edit" className="h-5 w-5" />
+                            <img src="https://i.ibb.co.com/Y76N1NpV/edit.png" alt="Edit" className="h-5 w-5" />
                           </button>
                           <button
                             onClick={() => handleDeleteReport(report.id)}
                             className="inline-flex items-center justify-center p-1 rounded-md hover:bg-gray-200"
                             title="Remove"
                           >
-                            <img src="/assets/img/sampah.png" alt="Remove" className="h-5 w-5" />
+                            <img src="https://i.ibb.co.com/m5PPgt5P/sampah.png" alt="Remove" className="h-5 w-5" />
                           </button>
                         </div>
                       )}

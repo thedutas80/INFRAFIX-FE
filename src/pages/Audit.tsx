@@ -181,7 +181,7 @@ const Audit: React.FC = () => {
                         onClick={() => handleDelete(item.id)}
                         className="inline-flex items-center justify-center p-1 rounded-md hover:bg-gray-200 mr-2 my-1"
                       >
-                        <img src="/assets/img/sampah.png" alt="Delete" className="h-5 w-5" />
+                        <img src="https://i.ibb.co.com/m5PPgt5P/sampah.png" alt="Delete" className="h-5 w-5" />
                       </button>
                     </div>
                   </td>

@@ -68,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
           <FaBars size={24} />
         </button>
         <Link to="/dashboard" className="flex items-center">
-          <img src="/assets/img/logo.png" alt="LaporinYuk Logo" className="h-8 mr-2" />
+          <img src="https://i.ibb.co.com/sJyHjYTQ/logo.png" alt="LaporinYuk Logo" className="h-8 mr-2" />
           <span className="text-xl font-semibold text-gray-800"></span>
         </Link>
       </div>
@@ -82,13 +82,11 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
           </div>
           <div className="relative">
             <button onClick={handleDropdownToggle} className="focus:outline-none">
-              <img src="/assets/img/author.png" alt="User Avatar" className="h-8 w-8 rounded-full cursor-pointer" />
+              <img src="https://i.ibb.co.com/Q3ZsY7Dy/author.png" alt="User Avatar" className="h-8 w-8 rounded-full cursor-pointer" />
             </button>
             {isDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-                <Link to="/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                  Settings
-                </Link>
+
                 <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                   Logout
                 </button>

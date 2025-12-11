@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({ appName }) => {
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/">
           <img
-            src="/assets/img/logo.png"
+            src="https://i.ibb.co.com/sJyHjYTQ/logo.png"
             alt={`${appName} Logo`}
             className="h-10"
             id="navbar-logo"

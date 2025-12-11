@@ -259,7 +259,7 @@ const Report: React.FC = () => {
               city: item.city,
               street: item.street,
               postCode: item.postCode,
-              imageUrl: item.image || '/assets/img/jalan.jpg',
+              imageUrl: item.image || 'https://i.ibb.co.com/1tHYfRR7/jalan.jpg',
           })).sort((a: ReportItem, b: ReportItem) => Number(b.id) - Number(a.id));
           setReportData(mappedReports);
       } else {
@@ -372,7 +372,7 @@ const Report: React.FC = () => {
       <h1 className="text-2xl font-semibold mb-6">Report Dashboard</h1>
 
       <div className="mb-4 flex justify-end space-x-4">
-        {userRole?.toLowerCase() !== 'admin' && (
+        {userRole?.toLowerCase() !== 'admin' && userRole?.toLowerCase() !== 'technician' && (
         <button
             onClick={() => setIsModalOpen(true)}
             className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-200"
@@ -472,14 +472,14 @@ const Report: React.FC = () => {
                              className="inline-flex items-center justify-center p-2 rounded-full hover:bg-gray-200 text-teal-600 transition-colors"
                              title="Edit Status"
                           >
-                             <img src="/assets/img/edit.png" alt="Edit" className="h-5 w-5" />
+                             <img src="https://i.ibb.co.com/Y76N1NpV/edit.png" alt="Edit" className="h-5 w-5" />
                           </button>
                           <button
                             onClick={() => handleDeleteReport(report.id)}
                             className="inline-flex items-center justify-center p-2 rounded-full hover:bg-red-100 text-red-600 transition-colors"
                             title="Delete Report"
                           >
-                             <img src="/assets/img/sampah.png" alt="Delete" className="h-5 w-5" />
+                             <img src="https://i.ibb.co.com/m5PPgt5P/sampah.png" alt="Delete" className="h-5 w-5" />
                           </button>
                         </>
                       )}

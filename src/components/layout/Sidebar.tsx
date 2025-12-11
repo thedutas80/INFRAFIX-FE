@@ -44,13 +44,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
     { name: 'User Management', icon: FaUserCog, path: '/dashboard/user-management' },
   ];
 
-  // Check for citizen role (roleId 1 or role 'citizen')
-  // Using loose equality to handle both string and number types safely
+  // Check for roles
   const isCitizen = user?.roleId == 1 || userRole?.toLowerCase() === 'citizen';
+  const isTechnician = user?.roleId == 3 || userRole?.toLowerCase() === 'technician';
 
   const filteredNavItems = isCitizen
     ? navItems.filter(item => ['Home', 'Report'].includes(item.name))
-    : navItems;
+    : isTechnician
+      ? navItems.filter(item => item.name !== 'User Management')
+      : navItems;
 
   return (
     <aside

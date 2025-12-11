@@ -39,7 +39,7 @@ const MainContent: React.FC<MainContentProps> = ({ appName }) => {
           <div className="md:w-1/2 flex justify-center">
             {/* Placeholder for Illustration/Icons */}
             <img
-              src="/assets/img/jalan.jpg"
+              src="https://i.ibb.co.com/1tHYfRR7/jalan.jpg"
               alt={`${appName} Infrastruktur Rusak`}
               className="max-w-full h-auto object-cover rounded-lg shadow-xl"
               style={{ maxWidth: '80%', height: 'auto' }}

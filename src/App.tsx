@@ -17,7 +17,6 @@ import Progress from './pages/Progress'
 import Ratings from './pages/Ratings'
 import Report from './pages/Report'
 import UserManagement from './pages/UserManagement'
-import SettingProfile from './pages/SettingProfile'
 import NotFound from './pages/NotFound'
 import Navbar from './components/layout/Navbar';
 import Sidebar from './components/layout/Sidebar';
@@ -91,7 +90,7 @@ function App({ HeaderComponent, MainContentComponent, FooterComponent }: AppProp
     return <div>Loading...</div>
   }
 
-  const isDashboardRoute = location.pathname.startsWith('/dashboard') || location.pathname === '/profile';
+  const isDashboardRoute = location.pathname.startsWith('/dashboard');
 
   const ProtectedRoute = ({ children }: { children?: React.ReactNode }) => {
     if (!isLoggedIn) {
@@ -135,7 +134,6 @@ function App({ HeaderComponent, MainContentComponent, FooterComponent }: AppProp
               <Route path="report" element={<Report />} />
               <Route path="user-management" element={<UserManagement />} />
             </Route>
-            <Route path="/settings" element={<ProtectedRoute><SettingProfile /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

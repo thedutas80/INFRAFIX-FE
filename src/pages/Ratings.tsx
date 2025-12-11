@@ -120,12 +120,12 @@ const Ratings: React.FC = () => {
                         onClick={() => handleEditRating(item)}
                         className="inline-flex items-center justify-center p-1 rounded-md hover:bg-gray-200 mr-2 my-1"
                       >
-                        <img src="/assets/img/edit.png" alt="Edit" className="h-5 w-5" />
+                        <img src="https://i.ibb.co.com/Y76N1NpV/edit.png" alt="Edit" className="h-5 w-5" />
                       </button>
                       <button 
                         onClick={() => handleDeleteRating(item.id)}
                         className="inline-flex items-center justify-center p-1 rounded-md hover:bg-gray-200 my-1">
-                        <img src="/assets/img/sampah.png" alt="Delete" className="h-5 w-5" />
+                        <img src="https://i.ibb.co.com/m5PPgt5P/sampah.png" alt="Delete" className="h-5 w-5" />
                       </button>
                     </div>
                   </td>
