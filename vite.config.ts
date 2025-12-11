@@ -14,9 +14,28 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'http://103.164.191.212:8082',
-        //target: 'http://localhost:8080',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
+        rewrite: (path) => path.replace(/^\/api/, ''),
+        configure: (proxy, _options) => {
+          proxy.on('proxyReq', (proxyReq, _req, _res) => {
+            proxyReq.setHeader('Origin', 'http://103.164.191.212:8082');
+          });
+        }
+      }
+    }
+  },
+  preview: {
+    port: 3000,
+    proxy: {
+      '/api': {
+        target: 'http://103.164.191.212:8082',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+        configure: (proxy, _options) => {
+          proxy.on('proxyReq', (proxyReq, _req, _res) => {
+            proxyReq.setHeader('Origin', 'http://103.164.191.212:8082');
+          });
+        }
       }
     }
   }
