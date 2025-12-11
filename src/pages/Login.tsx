@@ -44,7 +44,7 @@ const Login: React.FC = () => {
     e.preventDefault();
 
     if (validateCaptcha(captchaInput) === false) {
-      toast.error('Captcha salah, silakan coba lagi!')
+      toast.error('Incorrect captcha, please try again!')
       return
     }
 
@@ -173,7 +173,7 @@ const Login: React.FC = () => {
           {/* CAPTCHA */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Verifikasi Captcha
+              Captcha Verification
             </label>
 
             {/* gambar captcha */}
@@ -185,7 +185,7 @@ const Login: React.FC = () => {
               value={captchaInput}
               onChange={(e) => setCaptchaInput(e.target.value)}
               className="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-md"
-              placeholder="Masukkan captcha di atas"
+              placeholder="Enter captcha from above"
             />
           </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaTasks, FaThLarge, FaClipboardList, FaBell, FaChartLine, FaStar, FaFileAlt } from 'react-icons/fa';
+import { FaHome, FaTasks, FaThLarge, FaClipboardList, FaBell, FaChartLine, FaStar, FaFileAlt, FaUserCog } from 'react-icons/fa';
 import useAuthStore from '../../store/authStore';
 
 import { jwtDecode } from 'jwt-decode';
@@ -36,12 +36,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const navItems = [
     { name: 'Home', icon: FaHome, path: '/dashboard' },
     { name: 'Assignments', icon: FaTasks, path: '/dashboard/assignments' },
-    { name: 'Categories', icon: FaThLarge, path: '/dashboard/categories' },
     { name: 'Audit', icon: FaClipboardList, path: '/dashboard/audit' },
     { name: 'Notifications', icon: FaBell, path: '/dashboard/notifications' },
     { name: 'Progress', icon: FaChartLine, path: '/dashboard/progress' },
     { name: 'Ratings', icon: FaStar, path: '/dashboard/ratings' },
     { name: 'Report', icon: FaFileAlt, path: '/dashboard/report' },
+    { name: 'User Management', icon: FaUserCog, path: '/dashboard/user-management' },
   ];
 
   // Check for citizen role (roleId 1 or role 'citizen')

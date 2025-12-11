@@ -7,6 +7,7 @@ interface User {
   roleId: number;
   role: string;
   token: string;
+  isEmailVerified?: boolean;
 }
 
 interface AuthState {

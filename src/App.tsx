@@ -7,7 +7,7 @@ import useAuthStore from './store/authStore';
 // Import other components that are still part of App's internal routing
 import Register from './pages/Register'
 import Login from './pages/Login'
-import VerifyEmail from './pages/VerifyEmail'
+import VerificationSuccess from './pages/VerificationSuccess'
 import Dashboard from './pages/Dashboard'
 import Assignments from './pages/Assignments'
 import Categories from './pages/Categories'
@@ -16,6 +16,7 @@ import Notifications from './pages/Notifications'
 import Progress from './pages/Progress'
 import Ratings from './pages/Ratings'
 import Report from './pages/Report'
+import UserManagement from './pages/UserManagement'
 import SettingProfile from './pages/SettingProfile'
 import NotFound from './pages/NotFound'
 import Navbar from './components/layout/Navbar';
@@ -122,7 +123,7 @@ function App({ HeaderComponent, MainContentComponent, FooterComponent }: AppProp
             } />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
-            <Route path="/verify-email" element={<VerifyEmail />} />
+            <Route path="/verification-success" element={<VerificationSuccess />} />
             <Route path="/dashboard" element={<ProtectedRoute />}>
               <Route index element={<Dashboard />} />
               <Route path="assignments" element={<Assignments />} />
@@ -132,6 +133,7 @@ function App({ HeaderComponent, MainContentComponent, FooterComponent }: AppProp
               <Route path="progress" element={<Progress />} />
               <Route path="ratings" element={<Ratings />} />
               <Route path="report" element={<Report />} />
+              <Route path="user-management" element={<UserManagement />} />
             </Route>
             <Route path="/settings" element={<ProtectedRoute><SettingProfile /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />

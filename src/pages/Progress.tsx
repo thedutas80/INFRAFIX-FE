@@ -1,39 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ProgressForm from '../components/forms/ProgressForm'; // Import the form component
+import { getAllReports } from '../api/adminApi';
 
 const Progress: React.FC = () => {
-  const [showForm, setShowForm] = useState(false);
-  const [editingProgressEntry, setEditingProgressEntry] = useState<any | null>(null);
-  const [progressData, setProgressData] = useState([
-    { id: '-', reportId: '-', actorId: '-', statusForm: '-', statusTo: '-', note: '-', attachment: '-', createAt: '19/10/2025' },
-    { id: '-', reportId: '-', actorId: '-', statusForm: '-', statusTo: '-', note: '-', attachment: '-', createAt: '19/10/2025' },
-    { id: '-', reportId: '-', actorId: '-', statusForm: '-', statusTo: '-', note: '-', attachment: '-', createAt: '19/10/2025' },
-    { id: '-', reportId: '-', actorId: '-', statusForm: '-', statusTo: '-', note: '-', attachment: '-', createAt: '19/10/2025' },
-    { id: '-', reportId: '-', actorId: '-', statusForm: '-', statusTo: '-', note: '-', attachment: '-', createAt: '19/10/2025' },
-  ]);
+    // const [showForm, setShowForm] = useState(false);
+    // const [editingProgressEntry, setEditingProgressEntry] = useState<any | null>(null);
+    const [progressData, setProgressData] = useState<any[]>([]);
+    const [paginatedData, setPaginatedData] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [page, setPage] = useState(0);
+    const pageSize = 5;
 
-  const handleAddProgressEntry = () => {
-    setEditingProgressEntry(null);
-    setShowForm(true);
-  };
+    useEffect(() => {
+        const fetchProgressReports = async () => {
+            try {
+                const response = await getAllReports();
+                if (response.success && Array.isArray(response.data)) {
+                    const inProgressReports = response.data
+                        .filter((item: any) => item.status === 'In Progress')
+                        .map((item: any) => ({
+                            id: item.id.toString(),
+                            reportId: item.id.toString(),
+                            actorId: `User-${item.userId}`,
+                            statusForm: 'Pending', // Assumed previous status
+                            statusTo: item.status,
+                            note: item.description,
+                            attachment: item.image ? 'Yes' : '-',
+                            createAt: item.createdDate ? new Date(item.createdDate).toLocaleDateString() : '-'
+                        }));
+                    setProgressData(inProgressReports);
+                }
+            } catch (error) {
+                console.error("Failed to fetch progress reports", error);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-  const handleEditProgressEntry = (entry: any) => {
-    setEditingProgressEntry(entry);
-    setShowForm(true);
-  };
+        fetchProgressReports();
+    }, []);
 
-  const handleCloseForm = () => {
-    setShowForm(false);
-    setEditingProgressEntry(null);
-  };
+    useEffect(() => {
+        const start = page * pageSize;
+        const end = start + pageSize;
+        setPaginatedData(progressData.slice(start, end));
+    }, [page, progressData]);
 
-  const handleSubmitForm = (formData: any) => {
-    console.log('Form submitted with data:', formData);
-    // In a real app, you'd update state or send to API
-    setShowForm(false);
-    setEditingProgressEntry(null);
-  };
+    const hasMore = (page + 1) * pageSize < progressData.length;
+
+/*
+    const handleAddProgressEntry = () => {
+        setEditingProgressEntry(null);
+        setShowForm(true);
+    };
+
+    const handleEditProgressEntry = (entry: any) => {
+        setEditingProgressEntry(entry);
+        setShowForm(true);
+    };
+
+    const handleCloseForm = () => {
+        setShowForm(false);
+        setEditingProgressEntry(null);
+    };
+
+    const handleSubmitForm = (formData: any) => {
+        console.log('Form submitted with data:', formData);
+        // In a real app, you'd update state or send to API
+        setShowForm(false);
+        setEditingProgressEntry(null);
+    };
+*/
+
+  if (loading) return <div className="p-6">Loading progress...</div>;
 
   return (
     <div className="p-6">
@@ -83,7 +123,7 @@ const Progress: React.FC = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {progressData.map((item, index) => (
+              {paginatedData.map((item, index) => (
                 <tr key={index}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                     {item.id}
@@ -111,12 +151,7 @@ const Progress: React.FC = () => {
                   </td>
                   <td className="px-6 py-4 text-left text-sm font-medium">
                     <div className="flex items-center flex-wrap">
-                      <button
-                        onClick={() => handleEditProgressEntry(item)}
-                        className="inline-flex items-center justify-center p-1 rounded-md hover:bg-gray-200 mr-2 my-1"
-                      >
-                        <img src="/assets/img/edit.png" alt="Edit" className="h-5 w-5" />
-                      </button>
+
                       <button className="inline-flex items-center justify-center p-1 rounded-md hover:bg-gray-200 my-1">
                         <img src="/assets/img/sampah.png" alt="Delete" className="h-5 w-5" />
                       </button>
@@ -134,52 +169,32 @@ const Progress: React.FC = () => {
           aria-label="Pagination"
         >
           <div className="flex-1 flex justify-between sm:justify-end">
-            <Link
-              to="#"
-              className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+             <button
+              onClick={() => setPage((prev) => Math.max(prev - 1, 0))}
+              disabled={page === 0 || loading}
+              className={`relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md bg-white hover:bg-gray-50 focus:outline-none ${
+                page === 0 || loading ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700'
+              }`}
             >
               Previous
-            </Link>
-            <div className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-              1
+            </button>
+            <div className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white">
+              Page {page + 1}
             </div>
-            <Link
-              to="#"
-              className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-            >
-              2
-            </Link>
-            <Link
-              to="#"
-              className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-            >
-              3
-            </Link>
-            <span className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white">
-              ...
-            </span>
-            <Link
-              to="#"
-              className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-            >
-              8
-            </Link>
-            <Link
-              to="#"
-              className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-            >
-              9
-            </Link>
-            <Link
-              to="#"
-              className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-            >
+            <button
+               onClick={() => setPage((prev) => prev + 1)}
+               disabled={!hasMore || loading}
+               className={`ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md bg-white hover:bg-gray-50 focus:outline-none ${
+                 !hasMore || loading ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700'
+               }`}
+             >
               Next
-            </Link>
+            </button>
           </div>
         </nav>
       </div>
 
+{/*
       {showForm && (
         <ProgressForm
           onClose={handleCloseForm}
@@ -187,6 +202,7 @@ const Progress: React.FC = () => {
           initialData={editingProgressEntry}
         />
       )}
+*/}
     </div>
   );
 };

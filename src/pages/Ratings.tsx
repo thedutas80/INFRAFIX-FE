@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import RatingForm from '../components/forms/RatingForm'; // Import the form component
+import Swal from 'sweetalert2';
 
 const Ratings: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
   const [editingRating, setEditingRating] = useState<any | null>(null);
   const [ratingsData, setRatingsData] = useState([
-    { id: '-', reportId: '-', score: '-', comment: '-', createAt: '19/10/2025' },
-    { id: '-', reportId: '-', score: '-', comment: '-', createAt: '19/10/2025' },
-    { id: '-', reportId: '-', score: '-', comment: '-', createAt: '19/10/2025' },
-    { id: '-', reportId: '-', score: '-', comment: '-', createAt: '19/10/2025' },
-    { id: '-', reportId: '-', score: '-', comment: '-', createAt: '19/10/2025' },
+    { id: '1', reportId: 'INFRA-001', score: 5, comment: 'Sangat cepat tanggap, terima kasih!', createAt: '10/12/2025' },
+    { id: '2', reportId: 'INFRA-003', score: 4, comment: 'Pengerjaan rapi, tapi agak telat sedikit.', createAt: '11/12/2025' },
+    { id: '3', reportId: 'INFRA-005', score: 5, comment: 'Luar biasa, jalanan kembali mulus.', createAt: '12/12/2025' },
+    { id: '4', reportId: 'INFRA-007', score: 3, comment: 'Masih ada sisa material berserakan.', createAt: '12/12/2025' },
+    { id: '5', reportId: 'INFRA-010', score: 5, comment: 'Pelayanan ramah dan profesional.', createAt: '13/12/2025' },
   ]);
 
   const handleAddRating = () => {
@@ -33,6 +34,28 @@ const Ratings: React.FC = () => {
     // In a real app, you'd update state or send to API
     setShowForm(false);
     setEditingRating(null);
+  };
+
+  const handleDeleteRating = async (id: string) => {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    });
+
+    if (result.isConfirmed) {
+      // Simulate API call and state update
+      setRatingsData(prev => prev.filter(r => r.id !== id));
+      Swal.fire(
+        'Deleted!',
+        'The rating has been deleted.',
+        'success'
+      );
+    }
   };
 
   return (
@@ -99,7 +122,9 @@ const Ratings: React.FC = () => {
                       >
                         <img src="/assets/img/edit.png" alt="Edit" className="h-5 w-5" />
                       </button>
-                      <button className="inline-flex items-center justify-center p-1 rounded-md hover:bg-gray-200 my-1">
+                      <button 
+                        onClick={() => handleDeleteRating(item.id)}
+                        className="inline-flex items-center justify-center p-1 rounded-md hover:bg-gray-200 my-1">
                         <img src="/assets/img/sampah.png" alt="Delete" className="h-5 w-5" />
                       </button>
                     </div>
